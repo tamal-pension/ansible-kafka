@@ -7,16 +7,13 @@ app_user: "kafka"
 app_group: "{{ app_user }}"
 users_groups:
   - name: "{{ app_group }}"
-  - name: "consult"
 users:
   - name: "{{ app_user }}"
     group: "{{ app_group }}"
-    append: yes
-  - name: consult
-    sudo_options: "ALL=(ALL) NOPASSWD: /bin/systemctl restart kafka"
-    groups:
-      - consult
-      - kafka
+    append: true
+    create_home: false
+    system: true
+    shell: /sbin/nologin
 
 private_ip: "{{ ansible_default_ipv4['address'] }}"
 aws_iam_role: "kafka-role"
@@ -29,7 +26,7 @@ disk:
   user: "{{ app_user }}"
   group: "{{ app_group }}"
   kms_key_id: "{{ disk_kms_key_id }}"
-  delete_on_termination: no
+  delete_on_termination: false
   app: kafka-data
 
 consul_service_start_and_enable: false
