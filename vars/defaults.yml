@@ -12,10 +12,9 @@ users:
     group: "{{ app_group }}"
     append: true
     create_home: false
-    system: true
     shell: /sbin/nologin
 
-private_ip: "{{ ansible_default_ipv4['address'] }}"
+private_ip: "{{ ansible_default_ipv4.address }}"
 aws_iam_role: "kafka-role"
 disk:
   name: /dev/sdb
@@ -31,3 +30,4 @@ disk:
 
 consul_service_start_and_enable: false
 consul_template_service_start_and_enable: false
+loki_base_url: "http://loki.{{ private_domain }}:3100"
