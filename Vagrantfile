@@ -14,7 +14,7 @@ TOPIC_NAME = "pre_playbook_errors"
 ACCOUNT_ID = "339712742264"
 AWS_REGION = "eu-west-1"
 MAIN_SH_ARGS = <<MARKER
--e "playbook_name=ansible-kafka discord_message_owner_name=#{Etc.getpwuid(Process.uid).name}"
+-e "playbook_name=ansible-kafka discord_message_owner_name=#{Etc.getpwuid(Process.uid).name}environment_id=pension-stg.local" --tags "installation,configuration"
 MARKER
 NODE_COUNT = 1
 CLUSTER_NAME = "#{Etc.getpwuid(Process.uid).name}-test"
