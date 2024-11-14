@@ -16,7 +16,8 @@
       advertised_listener: "kafka_advertised_listener"
       quorum_voters: "kafka_controller_quorum_voters"
       node_id: "kafka_node_id"
-      data_snapshot: "data_snapshot"
+      snapshot: "data_snapshot"
+      disk_delete_on_termination: "disk_delete_on_termination"
 
 - name: Java role
   ansible.builtin.import_role:

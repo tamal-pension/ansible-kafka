@@ -21,7 +21,8 @@ disk:
   user: "{{ app_user }}"
   group: "{{ app_group }}"
   kms_key_id: "{{ disk_kms_key_id }}"
-  delete_on_termination: false
+  snapshot: "{{ disk_snapshot | default(omit) }}"
+  delete_on_termination: "{{ disk_delete_on_termination | default(false) }}"
   app: kafka-data
 
 consul_service_start_and_enable: false
