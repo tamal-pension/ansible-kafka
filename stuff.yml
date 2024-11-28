@@ -18,6 +18,7 @@
       node_id: "kafka_node_id"
       snapshot: "data_snapshot"
       disk_delete_on_termination: "disk_delete_on_termination"
+      disk_size: "disk_size"
 
 - name: Java role
   ansible.builtin.import_role:
