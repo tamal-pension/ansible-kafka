@@ -19,7 +19,8 @@
       snapshot: "data_snapshot"
       disk_delete_on_termination: "disk_delete_on_termination"
       disk_size: "disk_size"
-      "log_retention_hours": "log_retention_hours"
+      log_retention_hours: "log_retention_hours"
+      num_partitions: "num_partitions"
 
 - name: Java role
   ansible.builtin.import_role:
@@ -29,7 +30,8 @@
   ansible.builtin.import_role:
     name: inqwise.stacktrek.kafka
   vars:
-    kafka_log_retention_hours: "{{ kafka_log_retention_hours | default(24) }}"
+    kafka_log_retention_hours: "{{ log_retention_hours | default(24) }}"
+    kafka_num_partitions: "{{ num_partitions | default(6) }}"
         
 - name: Shrink logs role
   ansible.builtin.include_role:

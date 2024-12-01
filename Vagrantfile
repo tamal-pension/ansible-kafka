@@ -14,7 +14,7 @@ TOPIC_NAME = "pre_playbook_errors"
 ACCOUNT_ID = "339712742264"
 AWS_REGION = "eu-west-1"
 MAIN_SH_ARGS = <<MARKER
--e "playbook_name=ansible-kafka discord_message_owner_name=#{Etc.getpwuid(Process.uid).name}environment_id=pension-stg.local" --tags "installation,configuration"
+-e "playbook_name=ansible-kafka discord_message_owner_name=#{Etc.getpwuid(Process.uid).name} environment_id=pension-stg.local" --tags "installation,configuration,debug"
 MARKER
 NODE_COUNT = 1
 CLUSTER_NAME = "#{Etc.getpwuid(Process.uid).name}-test"
@@ -70,7 +70,7 @@ Vagrant.configure("2") do |config|
         override.vm.synced_folder stacktrek_collection_path, '/vagrant/collections/ansible_collections/inqwise/stacktrek', type: :rsync, rsync__exclude: '.git/', disabled: false
             
         aws.region = AWS_REGION
-        aws.security_groups = ["sg-077f8d7d58d420467","sg-0e5812f76f107c47a", "sg-01707e90d708616d7"]
+        aws.security_groups = ["sg-077f8d7d58d420467","sg-0e5812f76f107c47a"]
             # public-ssh, kafka, consul
         aws.ami = "ami-0fa86d752d8b7d1ff"
         aws.instance_type = "r6g.medium"
