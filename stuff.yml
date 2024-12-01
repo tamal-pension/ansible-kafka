@@ -29,7 +29,7 @@
   ansible.builtin.import_role:
     name: inqwise.stacktrek.kafka
   vars:
-    kafka_log_retention_hours: "{{ kafka_log_retention_hours | dafault(24) }}"
+    kafka_log_retention_hours: "{{ kafka_log_retention_hours | default(24) }}"
         
 - name: Shrink logs role
   ansible.builtin.include_role:
